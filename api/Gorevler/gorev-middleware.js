@@ -2,11 +2,11 @@ const gorevModel = require("./gorev-model");
 
 async function checkGorevId(req, res, next) {
   try {
-    let id = req.params.id || req.body.gorevId; // hem görev hem de task için
+    let id = req.params.id || req.body.GorevId; // hem görev hem de task için
     const isExistGorev = await gorevModel.getById(id);
     if (!isExistGorev) {
       return res.status(404).json({
-        message: "Görev Bulunamadı",
+        message: "Böyle bir gorev yok",
       });
     } else {
       req.currentGorev = isExistGorev;
